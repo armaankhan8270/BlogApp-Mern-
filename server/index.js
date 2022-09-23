@@ -4,6 +4,7 @@ import cors from "cors";
 import UserRouter from "./Routes/user.js";
 import PostRouter from "./Routes/post.js";
 app.use(express.json());
+app.use(cors());
 const url =
   "mongodb+srv://armaankhan:armaan242@cluster0.ygbfntv.mongodb.net/?retryWrites=true&w=majority";
 
