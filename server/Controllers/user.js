@@ -1,8 +1,17 @@
 import Bloguser from "../Modules/user.js";
+// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
+// import user from "../Modules/user.js";
 
 export const CreateUser = async (req, res, next) => {
-  const newUser = new Bloguser(req.body);
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.username, salt);
   try {
+    const newUser = new Bloguser({
+      username: req.body.username,
+      password: hash,
+      email: req.body.email,
+    });
     const SavedUser = await newUser.save();
     res.status(203).json(SavedUser);
   } catch (error) {
@@ -16,5 +25,22 @@ export const GetAllUser = async (req, res, next) => {
     res.json(AllUser);
   } catch (error) {
     next(error);
+  }
+};
+export const Login = async (req, res, next) => {
+  try {
+    const blogusers = await Bloguser.findOne({ username: req.body.username });
+    if (!blogusers) return res.json("User not found!Pleae Check Your Username");
+
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      blogusers.password
+    );
+    if (!isPasswordCorrect) {
+      next("Wrong password or username!If You Are New Please SignUp first");
+    }
+    res.json("Welcome To Blogiing App" + blogusers.username);
+  } catch (error) {
+    res.json(error);
   }
 };
