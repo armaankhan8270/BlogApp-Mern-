@@ -30,15 +30,18 @@ export const GetAllUser = async (req, res, next) => {
 export const Login = async (req, res, next) => {
   try {
     const blogusers = await Bloguser.findOne({ username: req.body.username });
-    if (!blogusers) return res.json("User not found!Pleae Check Your Username");
+    if (!blogusers)
+      return res.status(400).json("User not found!Pleae Check Your Username");
 
     const isPasswordCorrect = await bcrypt.compare(
       req.body.password,
       blogusers.password
     );
-    if (!isPasswordCorrect) {
-      next("Wrong password or username!If You Are New Please SignUp first");
-    }
+    if (!isPasswordCorrect)
+      return res
+        .status(400)
+        .json("Wrong password or username!If You Are New Please SignUp first");
+
     res.json("Welcome To Blogiing App" + blogusers.username);
   } catch (error) {
     res.json(error);

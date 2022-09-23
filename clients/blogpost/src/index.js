@@ -8,12 +8,14 @@ import Post from "./Components/Post";
 import Allposts from "./Components/Allposts";
 import Signup from "./Components/Signup";
 import { StateApiContext } from "./context/Api";
+import Navbar from "./Components/Navbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StateApiContext>
     <BrowserRouter>
       {/* <App /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
