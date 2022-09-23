@@ -9,6 +9,7 @@ import Allposts from "./Components/Allposts";
 import Signup from "./Components/Signup";
 import { StateApiContext } from "./context/Api";
 import Navbar from "./Components/Navbar";
+import CreatePost from "./Components/CreatePost";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +23,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/post" element={<Post />} />
         <Route path="/allpost" element={<Allposts />} />
-        <Route path="/allpost" element={<Allposts />} />
+        <Route path="/createblog" element={<CreatePost />} />
       </Routes>
     </BrowserRouter>
   </StateApiContext>
