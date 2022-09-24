@@ -12,9 +12,12 @@ const Signup = () => {
       .post(url, RegisterData)
       .then((e) => {
         console.log(e);
+        alert(e.data);
+        // alert("");
       })
-      .catch((value) => {
-        console.log(value);
+      .catch((e) => {
+        console.log(e);
+        // alert(value.data.errors);
       });
   };
   return (
@@ -47,6 +50,7 @@ const Signup = () => {
               name="password"
               placeholder="Password"
               value={password}
+              required
               onChange={(e) => setpassword(e.target.value)}
             />
 
