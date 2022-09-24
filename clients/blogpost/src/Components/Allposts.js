@@ -25,7 +25,12 @@ const Allposts = () => {
   };
   return (
     <>
-      <button onClick={getData}>All Posts</button>
+      <button
+        className="text-3xl m-4 p-4 text-gray-300 text-center bg-cyan-600 rounded "
+        onClick={getData}
+      >
+        Click ME
+      </button>
       <div className="flex flex-wrap lg:ml-5 sm:ml-1">
         {Blogs
           ? Blogs.map((blogs, id) => {
