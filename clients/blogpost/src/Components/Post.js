@@ -13,10 +13,7 @@ const Post = () => {
               <br class="hidden lg:inline-block" />
               <p className="text-gray-500 text-sm p-2">{Data.username}</p>
             </h1>
-            <p class="mb-8 leading-relaxed">
-              {Data.desc}
-              {Data.photo}
-            </p>
+            <p class="mb-8 leading-relaxed">{Data.desc}</p>
             <div class="flex justify-center">
               <button class="inline-flex text-white bg-cyan-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Button
@@ -30,8 +27,11 @@ const Post = () => {
             <img
               class="object-cover  max-h-[700px] object-center rounded"
               alt="hero"
-              src={Data.photo}
+              src="https://images.unsplash.com/photo-1662351557356-bf3b79fe19d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8YWV1NnJMLWo2ZXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
             />
+            <h1 className="lg:text-xl m-3 ">
+              We add Add Image fuctionalty Soon
+            </h1>
           </div>
         </div>
       </section>

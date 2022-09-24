@@ -44,10 +44,10 @@ const Allposts = () => {
                       <div className="flex items-center">
                         <img
                           className="w-10 h-10 rounded-full mr-4"
-                          src="https://images.unsplash.com/photo-1662581871665-f299ba8ace07?ixlib=rb-1.2.1&ixid=M
-              nwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
+                          src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGJsb2dzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                           alt="Avatar of Writer"
                         />
+
                         <div className="text-sm">
                           <p className="text-gray-900 leading-none">
                             {blogs.username}

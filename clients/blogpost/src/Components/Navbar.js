@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Home from "./Home";
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="">
       <header class="text-gray-100 body-font rounded">
         <div class="container mx-auto flex flex-wrap rounded-lg p-5 flex-col md:flex-row items-center shadow-lg m-4  bg-slate-600">
           <a class="flex title-font font-medium items-center text-gray-100 mb-4 md:mb-0">
@@ -53,6 +54,7 @@ const Navbar = () => {
           </Link>
         </div>
       </header>
+      {/* <Home /> */}
     </div>
   );
 };

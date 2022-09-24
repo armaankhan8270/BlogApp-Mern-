@@ -8,7 +8,6 @@ export const StateApiContext = ({ children }) => {
     desc: "",
     username: "",
     categories: "",
-    photo: "",
   });
   //register api
 

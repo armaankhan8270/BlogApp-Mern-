@@ -7,7 +7,7 @@ import Login from "./Components/Login";
 import Post from "./Components/Post";
 import Allposts from "./Components/Allposts";
 import Signup from "./Components/Signup";
-import { StateApiContext } from "./context/Api";
+import { GlobalStateApiContext, StateApiContext } from "./context/Api";
 import Navbar from "./Components/Navbar";
 import CreatePost from "./Components/CreatePost";
 

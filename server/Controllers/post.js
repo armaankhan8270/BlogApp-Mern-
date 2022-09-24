@@ -20,14 +20,15 @@ export const GetAllPost = async (req, res, next) => {
 export const DeletePost = async (req, res, next) => {
   const id = req.params.id;
   const post = await Blog.findById(id);
-  if (post.username == req.body.username) {
-    try {
-      await post.delete();
-      res.json("deleted successfullt");
-    } catch (error) {
-      next(error.message);
-    }
-  } else {
-    next("you can only delete your post");
+  // if (post.username == req.body.username) {
+  try {
+    await post.delete();
+    res.json("deleted successfullt");
+  } catch (error) {
+    next(error.message);
   }
+  // }
+  // else {
+  next("you can only delete your post");
+  // }
 };
