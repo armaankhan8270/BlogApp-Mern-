@@ -1,20 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
+import FileBase64 from "react-file-base64";
 
 const CreatePost = () => {
   const [username, setusername] = useState("");
-  const [photo, setfile] = useState("");
+  const [photo, setphoto] = useState("");
   const [categories, setcategories] = useState("");
   const [desc, setdesc] = useState("");
   const [title, settitle] = useState("");
   const UploadBlog = async (e) => {
     e.preventDefault();
     const url = "http://localhost:3001/post";
-    const BlogDatas = { username, photo, categories, desc, title };
+    const BlogDatas = { username, categories, desc, title };
     await axios
       .post(url, BlogDatas)
       .then((e) => {
         console.log(e);
+        alert(e.data);
       })
       .catch((e) => {
         console.log(e);
@@ -152,12 +154,22 @@ const CreatePost = () => {
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
               </div>
-              <input
-                value={photo}
-                onChange={(e) => setfile(e.target.file)}
+              {/* <input
+                onChange={(e) => {
+                  setphoto(e.target.files[0]);
+                  console.log(photo);
+                }}
+                type="file"
+                class="hidde"
+              /> */}
+              <FileBase64
                 id="dropzone-file"
                 type="file"
-                class="hidden"
+                multiple={false}
+                onDone={({ base64 }) => {
+                  setphoto(base64);
+                  console.log(base64);
+                }}
               />
             </label>
           </div>

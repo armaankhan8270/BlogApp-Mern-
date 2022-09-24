@@ -6,7 +6,7 @@ export const CreatePost = async (req, res, next) => {
     const SaveNewPost = await NewPost.save();
     res.json(SaveNewPost);
   } catch (error) {
-    res.send(error);
+    res.send(error, "armaan");
     next(error);
   }
 };
