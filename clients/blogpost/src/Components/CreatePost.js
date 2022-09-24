@@ -11,7 +11,7 @@ const CreatePost = () => {
   const UploadBlog = async (e) => {
     e.preventDefault();
     const url = "http://localhost:3001/post";
-    const BlogDatas = { username, categories, desc, title };
+    const BlogDatas = { username, categories, photo, desc, title };
     await axios
       .post(url, BlogDatas)
       .then((e) => {
@@ -19,7 +19,7 @@ const CreatePost = () => {
         alert(e.data);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.message);
       });
   };
   return (
@@ -170,6 +170,10 @@ const CreatePost = () => {
                   setphoto(base64);
                   console.log(base64);
                 }}
+                // onChange={({ base64 }) => {
+                //   setphoto(base64);
+                //   console.log(base64);
+                // }}
               />
             </label>
           </div>

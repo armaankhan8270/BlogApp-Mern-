@@ -24,7 +24,7 @@ export const GetAllUser = async (req, res, next) => {
     const AllUser = await Bloguser.find();
     res.json(AllUser);
   } catch (error) {
-    next(error);
+    next(error.message);
   }
 };
 export const Login = async (req, res, next) => {
@@ -44,6 +44,6 @@ export const Login = async (req, res, next) => {
 
     res.json("Welcome To Blogiing App" + blogusers.username);
   } catch (error) {
-    res.json(error);
+    next(error.message);
   }
 };

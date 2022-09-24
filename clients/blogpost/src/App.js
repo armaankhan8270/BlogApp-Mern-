@@ -6,11 +6,10 @@ import Post from "./Components/Post";
 import { GlobalStateApiContext } from "./context/Api";
 
 function App() {
-  const { state } = GlobalStateApiContext();
+  const {} = GlobalStateApiContext();
   return (
     <div className="App mb-12">
-      <h1 className="text-3xl font-bold text-center">App {state}</h1>
-      <Navbar />
+      <h1 className="text-3xl font-bold text-center">App </h1>
       {/* <Post /> */}
       {/* <Login /> */}
       {/* <Allposts /> */}
