@@ -26,8 +26,9 @@ mongoose.connection.on("connected", () => {
 });
 app.use("/user", UserRouter);
 app.use("/post", PostRouter);
+//
 app.use((err, req, res, next) => {
-  return res.status(500).send(err);
+  return res.json("i am errorrrrrr" + err);
 });
 app.listen("3001", (req, res) => {
   connect();

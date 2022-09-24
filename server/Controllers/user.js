@@ -15,7 +15,7 @@ export const CreateUser = async (req, res, next) => {
     const SavedUser = await newUser.save();
     res.status(203).json(SavedUser);
   } catch (error) {
-    res.json("check your infos");
+    next(error.message);
   }
 };
 

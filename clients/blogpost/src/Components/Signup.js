@@ -5,7 +5,8 @@ const Signup = () => {
   const [username, setusername] = useState();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
-  const Register = async () => {
+  const Register = async (e) => {
+    e.preverntDefault();
     const url = "http://localhost:3001/user/register";
     const RegisterData = { username, password, email };
     await axios
@@ -26,41 +27,43 @@ const Signup = () => {
         <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 class="mb-8 text-3xl text-center">Sign up</h1>
-            <input
-              type="text"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="fullname"
-              placeholder="UserName"
-              value={username}
-              onChange={(e) => setusername(e.target.value)}
-            />
+            <form>
+              <input
+                type="text"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="fullname"
+                placeholder="UserName"
+                value={username}
+                onChange={(e) => setusername(e.target.value)}
+              />
 
-            <input
-              type="text"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setemail(e.target.value)}
-            />
+              <input
+                type="text"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+              />
 
-            <input
-              type="password"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="password"
-              placeholder="Password"
-              value={password}
-              required
-              onChange={(e) => setpassword(e.target.value)}
-            />
+              <input
+                type="password"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                placeholder="Password"
+                value={password}
+                required
+                onChange={(e) => setpassword(e.target.value)}
+              />
 
-            <button
-              onClick={Register}
-              type="submit"
-              class="w-full text-center py-3 rounded bg-cyan-900 text-white hover:bg-green-dark focus:outline-none my-1"
-            >
-              Create Account
-            </button>
+              <button
+                onClick={Register}
+                type="submit"
+                class="w-full text-center py-3 rounded bg-cyan-900 text-white hover:bg-green-dark focus:outline-none my-1"
+              >
+                Create Account
+              </button>
+            </form>
 
             <div class="text-center text-sm text-grey-dark mt-4">
               By signing up, you agree to the
