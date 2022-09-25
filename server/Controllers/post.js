@@ -32,3 +32,16 @@ export const DeletePost = async (req, res, next) => {
   next("you can only delete your post");
   // }
 };
+export const GetPostByCategorey = async (req, res, next) => {
+  const Categories = req.query.categories.split(",");
+  try {
+    const Lists = await Promise.all(
+      Categories.map(async (categories) => {
+        return await Blog.find({ categories: categories });
+      })
+    );
+    res.json(Lists);
+  } catch (error) {
+    next(error.message);
+  }
+};

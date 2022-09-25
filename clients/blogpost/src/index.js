@@ -10,6 +10,7 @@ import Signup from "./Components/Signup";
 import { GlobalStateApiContext, StateApiContext } from "./context/Api";
 import Navbar from "./Components/Navbar";
 import CreatePost from "./Components/CreatePost";
+import SearchBlog from "./Components/Searc";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
         <Route path="/post" element={<Post />} />
         <Route path="/allpost" element={<Allposts />} />
         <Route path="/createblog" element={<CreatePost />} />
+        <Route path="/search" element={<SearchBlog />} />
       </Routes>
     </BrowserRouter>
   </StateApiContext>
