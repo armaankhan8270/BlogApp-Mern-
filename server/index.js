@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+import multer from "multer";
 import cors from "cors";
 import UserRouter from "./Routes/user.js";
 import PostRouter from "./Routes/post.js";
@@ -28,9 +29,23 @@ mongoose.connection.on("connected", () => {
 });
 app.use("/user", UserRouter);
 app.use("/post", PostRouter);
-//
+//mildware
 app.use((err, req, res, next) => {
   return res.json("i am errorrrrrr" + err);
+});
+
+//multer
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(nill, "../clients/blogpost/public/uploads/");
+  },
+  filename: (req, file, callbacl) => {
+    callback(null, file.originalname);
+  },
+});
+export const uploads = multer({ storage: storage });
+app.post("/post/create", uploads.single("orignalname"), (req, res) => {
+  res.json("File has been uploaded");
 });
 app.listen("3001", (req, res) => {
   connect();

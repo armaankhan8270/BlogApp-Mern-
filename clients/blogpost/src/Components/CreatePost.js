@@ -13,7 +13,7 @@ const CreatePost = () => {
   const UploadBlog = async (e) => {
     e.preventDefault();
     const url = "http://localhost:3001/post/create";
-    const BlogDatas = { username, categories, desc, title };
+    const BlogDatas = { username, photo, categories, desc, title };
     await axios
       .post(url, BlogDatas)
       .then((e) => {
@@ -164,11 +164,25 @@ const CreatePost = () => {
                   </div>
                   <input
                     onChange={(e) => {
-                      setphoto(e.target.files[0]);
+                      setphoto(e.target.value);
                       console.log(photo);
                     }}
-                    type="file"
-                    class="hidde"
+                    type="text"
+                    placeholder="url of image"
+                    class="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   />
                   {/* <FileBase64
                 id="dropzone-file"
@@ -231,7 +245,7 @@ const CreatePost = () => {
       transition
       duration-150
       ease-in-out"
-                onClick={UploadBlog}
+                // onClick={UploadBlog}
               >
                 Upload
               </button>

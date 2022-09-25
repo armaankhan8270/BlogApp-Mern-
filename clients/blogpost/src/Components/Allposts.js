@@ -42,8 +42,9 @@ const Allposts = () => {
                   >
                     <img
                       className="w-full"
-                      src="https://images.unsplash.com/photo-1663915804905-168d8e0ed2cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                      alt="Sunset in the mountains"
+                      // src="https://images.unsplash.com/photo-1663915804905-168d8e0ed2cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+                      alt={blogs.photo}
+                      src={blogs.photo}
                     />
                     <div className="px-6 py-4">
                       <div className="flex items-center">
