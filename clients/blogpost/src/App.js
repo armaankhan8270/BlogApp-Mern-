@@ -12,10 +12,9 @@ function App() {
   return (
     <div className="App mb-12">
       <h1 className="text-3xl font-bold text-center">App </h1>
-      <Login />
-      <Signup />/
-      <Post />
-      <Allposts />
+      {/* <Login /> */}
+      <Signup />/{/* <Post /> */}
+      {/* <Allposts /> */}
     </div>
   );
 }

@@ -3,16 +3,27 @@ import axios from "axios";
 
 const ApiContext = createContext();
 export const StateApiContext = ({ children }) => {
-  const [Data, setData] = useState({
+  const [pData, setpData] = useState({
     title: "",
     desc: "",
     username: "",
     categories: "",
+    // photo: "",
   });
+  const [PostData, setPostData] = useState({
+    title: "",
+    desc: "",
+    username: "",
+    categories: "",
+    photo: "",
+  });
+  const [user, setuser] = useState(false);
   //register api
 
   return (
-    <ApiContext.Provider value={{ Data, setData }}>
+    <ApiContext.Provider
+      value={{ pData, setpData, PostData, setPostData, user, setuser }}
+    >
       {children}
     </ApiContext.Provider>
   );

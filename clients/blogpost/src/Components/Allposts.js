@@ -7,7 +7,7 @@ import { GlobalStateApiContext } from "../context/Api";
 const Allposts = () => {
   const [Blogs, setBlogs] = useState([{}]);
   //
-  const { Data, setData } = GlobalStateApiContext();
+  const { pData, setpData } = GlobalStateApiContext();
   const id = "632ef82ed302ddd74309939a";
   const getData = async () => {
     await axios.get(`http://localhost:3001/post`).then((e) => {
@@ -80,7 +80,7 @@ const Allposts = () => {
                         <Link to="/post">
                           <button
                             onClick={() => {
-                              setData({
+                              setpData({
                                 username: blogs.username,
                                 desc: blogs.desc,
                                 title: blogs.title,
