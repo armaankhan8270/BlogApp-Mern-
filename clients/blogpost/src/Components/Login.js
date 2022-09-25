@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Allposts from "./Allposts";
 import Post from "./Post";
 const Login = (e) => {
   const [username, setusername] = useState();
@@ -65,7 +66,7 @@ const Login = (e) => {
           </form>
         </div>
       ) : (
-        <Post />
+        <Allposts />
       )}
     </>
   );
