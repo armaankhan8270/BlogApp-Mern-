@@ -5,7 +5,7 @@ import {
   GetAllPost,
   GetPostByCategorey,
 } from "../Controllers/post.js";
-import { uploads } from "../index.js";
+// import { uploads } from "../index.js";
 
 const router = express.Router();
 

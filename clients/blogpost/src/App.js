@@ -10,11 +10,8 @@ import Signup from "./Components/Signup";
 function App() {
   const { user } = GlobalStateApiContext();
   return (
-    <div className="App mb-12">
-      <h1 className="text-3xl font-bold text-center">App </h1>
-      {/* <Login /> */}
-      <Signup />/{/* <Post /> */}
-      {/* <Allposts /> */}
+    <div className="">
+      <Signup />
     </div>
   );
 }

@@ -1,53 +1,88 @@
 import express from "express";
-const app = express();
 import multer from "multer";
 import cors from "cors";
+import mongoose from "mongoose";
+import path from "path";
+import Blog from "./Modules/post.js";
 import UserRouter from "./Routes/user.js";
 import PostRouter from "./Routes/post.js";
+const app = express();
+const port = 3001;
+import { fileURLToPath } from "url";
+// Define the __dirname for ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// Middleware
 app.use(express.json());
 app.use(cors());
-// app.use(cors({ origin: true, credentials: true }));
 
+// MongoDB Connection
 const url =
   "mongodb+srv://armaankhan:armaan242@cluster0.ygbfntv.mongodb.net/?retryWrites=true&w=majority";
 
-import mongoose from "mongoose";
-import { AddAPhoto } from "@material-ui/icons";
 const connect = async () => {
   try {
-    await mongoose.connect(url);
-    console.log("we are succefullt connected to mongodb");
+    await mongoose.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Successfully connected to MongoDB");
   } catch (err) {
-    console.log("failed to connet Mongo db ");
+    console.log("Failed to connect to MongoDB", err);
   }
 };
+
 mongoose.connection.on("disconnected", () => {
-  console.log("we are dissconneted");
-});
-mongoose.connection.on("connected", () => {
-  console.log("we are conneted");
-});
-app.use("/user", UserRouter);
-app.use("/post", PostRouter);
-//mildware
-app.use((err, req, res, next) => {
-  return res.json("i am errorrrrrr" + err);
+  console.log("MongoDB disconnected");
 });
 
-//multer
+mongoose.connection.on("connected", () => {
+  console.log("MongoDB connected");
+});
+
+// Multer configuration
 const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(nill, "../clients/blogpost/public/uploads/");
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
   },
-  filename: (req, file, callbacl) => {
-    callback(null, file.originalname);
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-export const uploads = multer({ storage: storage });
-app.post("/post/create", uploads.single("orignalname"), (req, res) => {
-  res.json("File has been uploaded");
+
+const upload = multer({ storage: storage });
+
+// Routes
+app.use("/user", UserRouter);
+app.use("/post", PostRouter);
+
+// Error middleware
+app.use((err, req, res, next) => {
+  return res.status(500).json("I am error: " + err);
 });
-app.listen("3001", (req, res) => {
+
+// Endpoint to handle creating a post with a file
+app.post("/posts/create", upload.single("photo"), async (req, res) => {
+  const { title, desc, username, categories } = req.body;
+  const newPost = new Blog({
+    title,
+    desc,
+    username,
+    categories,
+    photo: req.file.filename, // Save filename to photo field
+  });
+
+  try {
+    const savedPost = await newPost.save();
+    res.json(savedPost);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Start the server
+app.listen(port, () => {
   connect();
-  console.log("server is running on 3001");
+  console.log(`Server is running on http://localhost:${port}`);
 });

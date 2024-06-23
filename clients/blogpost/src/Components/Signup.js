@@ -14,7 +14,7 @@ const Signup = () => {
     await axios
       .post(url, RegisterData)
       .then((e) => {
-        if (e.status == 203) {
+        if (e.status === 203) {
           setAfter(true);
           console.log(e);
           alert("welcome" + e.data.username);
@@ -30,14 +30,14 @@ const Signup = () => {
   return (
     <div>
       {!After ? (
-        <div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="bg-slate-800 min-h-screen flex flex-col">
           <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <div class="bg-slate-900 px-6 py-8 rounded shadow-md text-white w-full">
               <h1 class="mb-8 text-3xl text-center">Sign up</h1>
               <form onSubmit={Register}>
                 <input
                   type="text"
-                  class="block from-purple-600 to-blue-600  border border-grey-light w-full p-3 rounded mb-4"
+                  class="block bg-slate-900 border-b border-grey-light focus:outline-none w-full p-3 rounded mb-4 "
                   name="fullname"
                   placeholder="UserName"
                   value={username}
@@ -47,7 +47,7 @@ const Signup = () => {
 
                 <input
                   type="text"
-                  class="block border border-grey-light w-full p-3 rounded mb-4"
+                  class="block bg-slate-900 border-b border-grey-light focus:outline-none w-full p-3 rounded mb-4"
                   name="email"
                   placeholder="Email"
                   value={email}
@@ -57,7 +57,7 @@ const Signup = () => {
 
                 <input
                   type="password"
-                  class="block border border-grey-light w-full p-3 rounded mb-4"
+                  class="block bg-slate-900 border-b border-grey-light focus:outline-none w-full p-3 rounded mb-4"
                   name="password"
                   placeholder="Password"
                   value={password}
@@ -92,10 +92,10 @@ const Signup = () => {
               </div>
             </div>
 
-            <div class="text-grey-dark mt-6">
+            <div class="text-white   mt-6">
               Already have an account?
               <a
-                class="no-underline border-b border-blue text-blue"
+                class="no-underline text-white border-b border-blue text-blue"
                 href="/login"
               >
                 Log in

@@ -16,16 +16,16 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StateApiContext>
     <BrowserRouter>
-      {/* <App /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/post" element={<CreatePost />} />
         <Route path="/allpost" element={<Allposts />} />
         <Route path="/createblog" element={<CreatePost />} />
         <Route path="/search" element={<SearchBlog />} />
+        <Route path="/p" element={<Post />} />
       </Routes>
     </BrowserRouter>
   </StateApiContext>

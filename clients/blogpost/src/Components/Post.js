@@ -27,8 +27,7 @@ const Post = () => {
             <img
               class="object-cover  max-h-[700px] object-center rounded"
               alt="hero"
-              src={pData.photo}
-              // src="https://images.unsplash.com/photo-1662351557356-bf3b79fe19d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8YWV1NnJMLWo2ZXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+              src={`http://localhost:3001/${pData.photo}`}
             />
             <h1 className="lg:text-xl m-3 ">
               We add Add Image fuctionalty Soon

@@ -12,10 +12,12 @@ export const CreateUser = async (req, res, next) => {
       password: hash,
       email: req.body.email,
     });
+    console.log(newUser);
     const SavedUser = await newUser.save();
     res.status(203).json(SavedUser);
   } catch (error) {
     next(error.message);
+    console.log("abe saaale");
   }
 };
 
@@ -28,6 +30,7 @@ export const GetAllUser = async (req, res, next) => {
   }
 };
 export const Login = async (req, res, next) => {
+  console.log("reqwuest");
   try {
     const blogusers = await Bloguser.findOne({ username: req.body.username });
     if (!blogusers)
